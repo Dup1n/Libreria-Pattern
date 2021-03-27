@@ -1,0 +1,27 @@
+<?php
+
+
+class EstadoPrestado extends Estado{
+    public function disponible(): void
+    {
+        $this->contexto->transicionA(new EstadoDisponible());
+    }
+
+    public function perdido(): void
+    {
+        $this->contexto->transicionA(new EstadoPerdido());
+    }
+    
+    public function sobretiempo(): void
+    {
+        $this->contexto->transicionA(new EstadoSobretiempo());
+    }
+
+    public function prestado(): void{
+        throw new Exception('No implementado para este estado');
+    }
+
+    public function comprado(): void{
+        throw new Exception('No implementado para este estado');
+    }
+}
